@@ -46,11 +46,10 @@ export default {
 		},
 		shibe: async function() {
 			const getShibe = await fetch("http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true");
-			const getJSON = await getShibe.json();
 
-			if(getJSON[0])
-			this.selectedItem = getJSON[0];
-			alert(getJSON);
+			if(getShibe[0])
+			this.selectedItem = getShibe[0];
+			alert(getShibe);
 		}
 	},
 	components: {
