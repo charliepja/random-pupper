@@ -44,8 +44,9 @@ export default {
 				this.selectedItem = getJSON.message;
 			}
 		},
+
 		shibe: async function() {
-			const getShibe = await fetch("https://dog.ceo/api/breed/Shiba/images/random");
+			const getShibe = await fetch("https://dog.ceo/api/breed/shiba/images/random");
 			const getJSON = await getShibe.json();
 
 			if(getJSON.status === "success") {
