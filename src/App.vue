@@ -13,6 +13,11 @@
 						<button v-on:click="puppy">Random Pupper!</button>
 					</div>
 				</div>
+				<div id="link2">
+					<div class="center-item">
+						<button v-on:click="shibe">Random Shibe!</button>
+					</div>
+				</div>
 				<div id="imgs">
 					<got-image v-if="selectedItem" :pic="selectedItem"></got-image>
 				</div>
@@ -38,6 +43,13 @@ export default {
 			if(getJSON.status === "success") {
 				this.selectedItem = getJSON.message;
 			}
+		},
+		shibe: async function() {
+			const getShibe = await fetch("http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true");
+			const getJSON = await getShibe.json();
+
+			if(getJSON.length > 0)
+			this.selectedItem = getJSON[0];
 		}
 	},
 	components: {
@@ -73,6 +85,10 @@ h1 {
 
 #link1 {
 	grid-area: l1;
+}
+
+#link2 {
+	grid-area: l2;
 }
 
 .center-item {
