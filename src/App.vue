@@ -45,11 +45,12 @@ export default {
 			}
 		},
 		shibe: async function() {
-			const getShibe = await fetch("http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true");
+			const getShibe = await fetch("https://dog.ceo/api/breed/Shiba/images/random");
+			const getJSON = await getShibe.json();
 
-			if(getShibe[0])
-			this.selectedItem = getShibe[0];
-			alert(getShibe);
+			if(getJSON.status === "success") {
+				this.selectedItem = getJSON.message;
+			}
 		}
 	},
 	components: {
