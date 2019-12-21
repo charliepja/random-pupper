@@ -48,8 +48,9 @@ export default {
 			const getShibe = await fetch("http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true");
 			const getJSON = await getShibe.json();
 
-			if(getJSON.length > 0)
+			if(getJSON[0])
 			this.selectedItem = getJSON[0];
+			alert(getJSON);
 		}
 	},
 	components: {
