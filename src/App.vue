@@ -1,28 +1,89 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<div>
+			<h1>I love you</h1>
+			<div class="body">
+				<div id="note">
+					<p>This website has been made specifically for you.</p>
+					<p>Certain sections are for your eyes only. The password is our anniversary, use my date format.</p>
+					<p>I hope this helps with the big sads.</p>
+				</div>
+				<div id="link1">
+					<div class="center-item">
+						<button v-on:click="puppy">Random Pupper!</button>
+					</div>
+				</div>
+				<div id="imgs">
+					<got-image v-if="selectedItem" :pic="selectedItem"></got-image>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import GotImg from "./components/GotImg.vue";
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+	name: 'app',
+	data() {
+		return {
+			selectedItem: null
+		};
+	},
+	methods: {
+		puppy: async function() {
+			const getPuppy = await fetch("https://dog.ceo/api/breeds/image/random");
+			const getJSON = await getPuppy.json();
+
+			if(getJSON.status === "success") {
+				this.selectedItem = getJSON.message;
+			}
+		}
+	},
+	components: {
+		"got-image": GotImg
+	}
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+h1 {
+	color: pink;
+	display: flex;
+	justify-content: center;
+}
+
+.body {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto;
+	grid-gap: 25px;
+	grid-template-areas:
+	"n n n"
+	"l1 l2 l3"
+	". i .";
+}
+
+#note {
+	grid-area: n;
+	align-self: center;
+	justify-content: center;
+	text-align: center;
+}
+
+#link1 {
+	grid-area: l1;
+}
+
+.center-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#imgs {
+	grid-area: i;
+	width: 500px;
+	height: 500px;
 }
 </style>
