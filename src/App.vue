@@ -1,12 +1,10 @@
 <template>
 	<div id="app">
 		<div>
-			<h1>I love you</h1>
+			<h1>Big Doggos</h1>
 			<div class="body">
 				<div id="note">
-					<p>This website has been made specifically for you.</p>
-					<p>Certain sections are for your eyes only. The password is our anniversary, use my date format.</p>
-					<p>I hope this helps with the big sads.</p>
+					<p>Pick a pupper</p>
 				</div>
 				<div id="link1">
 					<div class="center-item">
